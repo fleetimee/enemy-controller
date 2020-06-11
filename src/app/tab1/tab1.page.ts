@@ -11,6 +11,8 @@ export class Tab1Page implements OnInit {
   public weather = {};
   public temp = 0;
   public city = '';
+  time = new Date();
+  timer;
 
   constructor(private weatherService: WeatherService) {}
 
@@ -20,6 +22,10 @@ export class Tab1Page implements OnInit {
       this.temp = result['main']['temp'];
       this.city = result['name'];
     });
+
+    this.timer = setInterval(() => {
+      this.time = new Date();
+    }, 1000);
   }
 
 }

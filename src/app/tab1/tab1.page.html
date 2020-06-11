@@ -9,12 +9,15 @@
 <ion-content [fullscreen]="true">
     <ion-header collapse="condense">
       <ion-toolbar>
-        <ion-title size="large">Weather Now</ion-title>
+        <ion-title size="large">Weather Now </ion-title>
       </ion-toolbar>
     </ion-header>
 
     <div id="container">
-        <h1 class="ion-60p ion-text-center ion-padding-top">{{ temp }} °C</h1>
+        <h1 class="ion-60p ion-text-center ion-padding-top">{{ temp }} °C <br>
+          <small class="ion-text-center">{{ time | date: 'hh:mm:ss a' }}</small>
+        </h1>
+        
         <div *ngFor="let w of weather.weather">
             <img class="center" src="http://openweathermap.org/img/wn/{{w.icon}}@2x.png" height="180 px"/>
             <h1 class="ion-30p; ion-text-center">
