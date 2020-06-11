@@ -12,7 +12,7 @@ export class Tab2Page implements OnInit {
 
   ngOnInit(): void {
     this.weatherService.getForecast().subscribe(result => {
-      this.whList = result.list;
+      this.whList = result['list'];
     });
   }
 

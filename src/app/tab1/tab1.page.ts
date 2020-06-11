@@ -17,8 +17,8 @@ export class Tab1Page implements OnInit {
   ngOnInit(): void {
     this.weatherService.getData().subscribe(result  => {
       this.weather = result;
-      this.temp = result.main.temp;
-      this.city = result.name;
+      this.temp = result['main']['temp'];
+      this.city = result['name'];
     });
   }
 
