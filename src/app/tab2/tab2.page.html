@@ -7,11 +7,28 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list>
+    <ion-item *ngFor="let w of whList">
+      <ion-grid>
+        <ion-row *ngFor="let d of w.weather">
+          <ion-col size="2">
+            <img src="http://openweathermap.org/img/wn/{{d.icon}}@2x.png" height="55px"/>
+          </ion-col>
+          <ion-col size="6">
+            <ion-label>
+              {{ d.main }} - {{ d.description }} <br>
+              <small>{{ w.dt_txt }}</small>
+            </ion-label>
+          </ion-col>
+          <ion-col size="4" class="ion-text-right">
+            <ion-label color="success">
+              {{ w.main.temp }} <br>
+              <small>{{ w.main.temp_min }} ~ {{ w.main.temp_max }}</small>
+            </ion-label>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
 </ion-content>

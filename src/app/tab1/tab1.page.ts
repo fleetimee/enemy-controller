@@ -15,11 +15,10 @@ export class Tab1Page implements OnInit {
   constructor(private weatherService: WeatherService) {}
 
   ngOnInit(): void {
-    this.weatherService.getData().subscribe(result => {
+    this.weatherService.getData().subscribe(result  => {
       this.weather = result;
       this.temp = result.main.temp;
       this.city = result.name;
-      console.log(this.weather);
     });
   }
 
