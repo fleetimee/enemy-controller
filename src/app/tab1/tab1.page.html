@@ -14,9 +14,11 @@
     </ion-header>
 
     <div style="margin-top: 50px;" id="container">
-        <h1 class="ion-60p ion-text-center ion-padding-top"> {{ temp }} °C <br>
-          <small class="ion-text-center">{{ time | date: 'hh:mm:ss a' }}</small>
-        </h1>
+        <ion-label color="success">
+          <h1 class="ion-60p ion-text-center ion-padding-top" color="success"> {{ temp }} °C <br>
+            <small class="ion-text-center">{{ time | date: 'hh:mm:ss a' }}</small>
+          </h1>
+        </ion-label>
         
         <div *ngFor="let w of weather.weather">
             <img class="center" src="http://openweathermap.org/img/wn/{{w.icon}}@2x.png" height="180 px"/>

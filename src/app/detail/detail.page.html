@@ -15,15 +15,17 @@
   </ion-header>
   
   <div id="container" style="margin-top: 100px;" class="ion-text-center">
-    <h1 class="ion-60p">{{weather.temp}} °C</h1>
+    <ion-label color="success">
+      <h1 class="ion-60p" >{{weather.temp}} °C</h1>
+    </ion-label>
     
-    <img src="http://openweathermap.org/img/wn/{{weather.icon}}@2x.png"/>
+    <img height="180 px" src="http://openweathermap.org/img/wn/{{weather.icon}}@2x.png"/>
     <h1 class="ion-30p">
       {{weather.main}} <small>({{weather.desc}})</small><br/>
-      <ion-icon name="calendar-outline"></ion-icon>
-       {{ weather.date | date:'dd MMM yyyy - HH:mm'}}
+      <small><ion-icon name="calendar-outline"></ion-icon>
+       {{ weather.date | date:'dd MMM yyyy - HH:mm'}}</small>
     </h1>
-    
+    <br>
     <ion-button (click)="save()"> Favorite</ion-button>
   </div>
 </ion-content>
