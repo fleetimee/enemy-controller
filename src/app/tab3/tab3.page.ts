@@ -10,4 +10,12 @@ export class Tab3Page {
   constructor() {
     this.fav = JSON.parse(localStorage.getItem('fav'));
   }
+
+  doRefresh(event) {
+    setTimeout(() => {
+      this.fav = JSON.parse(localStorage.getItem('fav'));
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
 }
