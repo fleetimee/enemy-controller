@@ -13,17 +13,22 @@
                 <ion-row>
                     <ion-col size="4">
                         <ion-icon name="calendar-outline"></ion-icon>
-                        {{fav.date|date:'dd MMM yyyy'}}
-                        <ion-icon name="time-outline"></ion-icon>
+                        {{fav.date|date:'dd MMM yyyy'}} <br> 
+                        <ion-icon  name="time-outline"></ion-icon>
                         {{fav.date|date:'HH:mm '}}
                     </ion-col>
-                    <ion-col size="6">
+                    <ion-col size="4">
                         <ion-label>
                             {{fav.main}} <br/> {{fav.desc}}
                         </ion-label>
                     </ion-col>
                     <ion-col size="2">
-                        <img src="http://openweathermap.org/img/wn/{{fav.icon}}@2x.png"/>
+                        <ion-label class="ion-padding-top" color="success">
+                            {{ fav.temp }} C
+                        </ion-label>
+                    </ion-col>
+                    <ion-col size="2">
+                        <img class="ion-margin-bottom" src="http://openweathermap.org/img/wn/{{fav.icon}}@2x.png"/>
                     </ion-col>
                 </ion-row>
             </ion-grid>
