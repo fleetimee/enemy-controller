@@ -16,26 +16,26 @@
     </ion-refresher>
     <ion-list>
         <ion-item>
-            <ion-grid>
-                <ion-row>
+            <ion-grid class="ion-padding-top">
+                <ion-row *ngFor="let fv of fav" class="ion-padding-top">
                     <ion-col size="4">
-                        <ion-icon name="calendar-outline"></ion-icon>
-                        {{fav.date|date:'dd MMM yyyy'}} <br> 
+                        <small><ion-icon name="calendar-outline"></ion-icon>
+                        {{fv.date|date:'dd MMM yyyy'}} <br> 
                         <ion-icon  name="time-outline"></ion-icon>
-                        {{fav.date|date:'HH:mm '}}
+                           {{fv.date|date:'HH:mm '}}</small>
                     </ion-col>
-                    <ion-col size="4">
+                    <ion-col size="3">
                         <ion-label>
-                            {{fav.main}} <br/> {{fav.desc}}
+                            {{fv.main}} <br/> <small>({{fv.desc}})</small>
                         </ion-label>
                     </ion-col>
-                    <ion-col size="2">
+                    <ion-col size="3">
                         <ion-label class="ion-padding-top" color="success">
-                            <small>{{ fav.temp }} °C</small>
+                            <small>{{ fv.temp }} °C</small>
                         </ion-label>
                     </ion-col>
                     <ion-col size="2">
-                        <img class="ion-margin-bottom" src="http://openweathermap.org/img/wn/{{fav.icon}}@2x.png"/>
+                        <img class="ion-margin-bottom" src="http://openweathermap.org/img/wn/{{fv.icon}}@2x.png"/>
                     </ion-col>
                 </ion-row>
             </ion-grid>

@@ -24,7 +24,16 @@ export class DetailPage implements OnInit {
   }
 
   async save() {
-    localStorage.setItem('fav', JSON.stringify(this.weather));
+
+    let data = [];
+
+    let w = JSON.parse(localStorage.getItem('fav'));
+
+    if (w != null) {
+      for (let i=0; i<w.length; i++) {
+        data.push(w[i]);
+      }
+    }
 
     const alert = await this.alertControllerl.create({
       cssClass: 'my-custom-class',
@@ -34,8 +43,8 @@ export class DetailPage implements OnInit {
     });
 
     await alert.present();
+    
+    data.push(this.weather);
+    localStorage.setItem('fav', JSON.stringify(data));
   }
-
-
-
 }
