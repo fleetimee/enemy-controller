@@ -11,6 +11,12 @@ export class Tab3Page {
     this.fav = JSON.parse(localStorage.getItem('fav'));
   }
 
+  delete() {
+    if (localStorage.length > 0 ) {
+    localStorage.clear();
+    } 
+  }
+
   doRefresh(event) {
     setTimeout(() => {
       this.fav = JSON.parse(localStorage.getItem('fav'));
