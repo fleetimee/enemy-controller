@@ -23,28 +23,18 @@ export class DetailPage implements OnInit {
   ngOnInit() {
   }
 
-  async save() {
-
-    let data = [];
-
-    let w = JSON.parse(localStorage.getItem('fav'));
-
-    if (w != null) {
-      for (let i=0; i<w.length; i++) {
-        data.push(w[i]);
-      }
+  save() {
+    let data    = JSON.parse(localStorage.getItem('fav')) || [],
+        isExist = data.findIndex((obj) => {
+          // Disini semua keys akan di kompare untuk di validasi berdasarkan "keunikannya"
+          return obj.date == this.weather.date && obj.temp == this.weather.temp; 
+        }) != -1;
+  
+    if (isExist) {
+      console.log("duplicate");
+    } else {
+      data.push(this.weather);
+      localStorage.setItem('fav', JSON.stringify(data));
     }
-
-    const alert = await this.alertControllerl.create({
-      cssClass: 'my-custom-class',
-      header: 'Success !',
-      message: 'Berhasil difavoritkan <br> Silahkan cek tab Favorite',
-      buttons: ['OK']
-    });
-
-    await alert.present();
-    
-    data.push(this.weather);
-    localStorage.setItem('fav', JSON.stringify(data));
   }
 }
