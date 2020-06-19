@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab3', 
@@ -7,13 +8,35 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
   public fav;
-  constructor() {
+  constructor(public alertController: AlertController) {
     this.fav = JSON.parse(localStorage.getItem('fav'));
   }
 
-  delete() {
+  async delete() {
     if (localStorage.length > 0 ) {
-    localStorage.clear();
+      const alert = await this.alertController.create({
+        cssClass: 'my-custom-class',
+        header: 'Are you sure?',
+        message: 'Jika klik skuy maka semua favorit akan hilang',
+        buttons: [
+          {
+            text: 'Nope',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              
+            }
+          }, {
+            text: 'Skuy',
+            handler: () => {
+              localStorage.clear();
+            }
+          }
+        ]
+      });
+  
+      await alert.present();
+     
     } 
   }
 

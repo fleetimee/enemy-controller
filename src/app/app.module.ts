@@ -11,10 +11,12 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, SweetAlert2Module.forRoot()],
   providers: [
     StatusBar,
     SplashScreen,

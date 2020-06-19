@@ -3,9 +3,6 @@
         <ion-title>
             Favorite
         </ion-title>
-        <ion-button (click)="delete()">
-            <ion-icon name="trash-outline"></ion-icon>
-        </ion-button>
     </ion-toolbar>
 </ion-header>
 
@@ -41,8 +38,14 @@
                         <img class="ion-margin-bottom" src="http://openweathermap.org/img/wn/{{fv.icon}}@2x.png"/>
                     </ion-col>
                 </ion-row>
+                
             </ion-grid>
         </ion-item>
     </ion-list>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button  (click)="delete()" color="danger">
+            <ion-icon name="trash-outline"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>
 

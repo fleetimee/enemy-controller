@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -12,7 +12,7 @@ export class DetailPage implements OnInit {
 
   weather: any;
 
-  constructor(private route: ActivatedRoute, private router: Router, private alertControllerl: AlertController) { 
+  constructor(private route: ActivatedRoute, private router: Router, private alertControllerl: AlertController, public toastController: ToastController) { 
     this.route.queryParams.subscribe(params => {
       if (params && params.special) {
         this.weather = JSON.parse(params.special);
@@ -23,7 +23,7 @@ export class DetailPage implements OnInit {
   ngOnInit() {
   }
 
-  save() {
+  async save() {
     let data    = JSON.parse(localStorage.getItem('fav')) || [],
         isExist = data.findIndex((obj) => {
           // Disini semua keys akan di kompare untuk di validasi berdasarkan "keunikannya"
@@ -31,10 +31,24 @@ export class DetailPage implements OnInit {
         }) != -1;
   
     if (isExist) {
-      console.log("duplicate");
+      const alert = await this.alertControllerl.create({
+        cssClass: 'my-custom-class',
+        header: 'Error',
+        message: 'Data tidak boleh duplikat.',
+        buttons: ['OK']
+      });
+  
+      await alert.present();
     } else {
+      const toast = await this.toastController.create({
+        message: 'Berhasil di favoritkan.',
+        duration: 2000
+      });
+      toast.present();
       data.push(this.weather);
       localStorage.setItem('fav', JSON.stringify(data));
     }
+
+
   }
 }

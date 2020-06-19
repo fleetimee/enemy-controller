@@ -8,12 +8,15 @@ import { DetailPageRoutingModule } from './detail-routing.module';
 
 import { DetailPage } from './detail.page';
 
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DetailPageRoutingModule
+    DetailPageRoutingModule,
+    SweetAlert2Module,
   ],
   declarations: [DetailPage]
 })

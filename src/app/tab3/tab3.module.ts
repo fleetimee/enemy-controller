@@ -8,6 +8,8 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab3PageRoutingModule } from './tab3-routing.module'
 
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 @NgModule({
   imports: [
     IonicModule,
@@ -16,6 +18,7 @@ import { Tab3PageRoutingModule } from './tab3-routing.module'
     ExploreContainerComponentModule,
     RouterModule.forChild([{ path: '', component: Tab3Page }]),
     Tab3PageRoutingModule,
+    SweetAlert2Module,
   ],
   declarations: [Tab3Page]
 })
