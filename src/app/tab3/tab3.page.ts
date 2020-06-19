@@ -15,61 +15,47 @@ export class Tab3Page {
   }
 
   async delete() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Gagal delete!',
+      text: 'Favorit masih kosong silahkan tambah lewat forecast!',
+      confirmButtonColor: '#d33',
+    })
     if (localStorage.length > 0 ) {
-      // const alert = await this.alertController.create({
-      //   cssClass: 'my-custom-class',
-      //   header: 'Are you sure?',
-      //   message: 'Jika klik skuy maka semua favorit akan hilang',
-      //   buttons: [
-      //     {
-      //       text: 'Nope',
-      //       role: 'cancel',
-      //       cssClass: 'secondary',
-      //       handler: (blah) => {
-              
-      //       }
-      //     }, {
-      //       text: 'Skuy',
-      //       handler: () => {
-      //         localStorage.clear();
-      //       }
-      //     }
-      //   ]
-      // });
-  
-      // await alert.present();
-      const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: 'btn btn-success',
-          cancelButton: 'btn btn-danger'
-        },
-        buttonsStyling: true
-      })
-      
-      swalWithBootstrapButtons.fire({
+      Swal.fire({
         title: 'Are you sure?',
         text: "Semua data di favorit akan terhapus!",
         icon: 'warning',
         showCancelButton: true,
+        confirmButtonColor: '#28a745',
+        cancelButtonColor: '#d33', 
         confirmButtonText: 'Ya, delete aja',
         cancelButtonText: 'moh',
         reverseButtons: false
       }).then((result) => {
         if (result.value) {
           localStorage.clear();
-          swalWithBootstrapButtons.fire(
-            'Berhasil dihapus',
-            'Semua data berhasil dihapus silakan pull untuk merefresh page.',
-            'success'
+          Swal.fire(
+            {
+              title: 'Berhasil dihapus',
+              text: 'Semua data berhasil dihapus silakan pull untuk merefresh page.',
+              icon: 'success',
+              confirmButtonColor: '#28a745',
+              cancelButtonColor: '#3085d6', 
+            }
           )
         } else if (
           /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
         ) {
-          swalWithBootstrapButtons.fire(
-            'Dibatalkan',
-            'Gak jadi lurd :)',
-            'error'
+          Swal.fire(
+            {
+              title: 'Dibatalkan',
+              text: 'Gak jadi lurd :)',
+              icon: 'error',
+              confirmButtonColor: '#d33',
+              cancelButtonColor: '#d33', 
+            }
           )
         }
       })
