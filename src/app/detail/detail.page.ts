@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-detail',
@@ -31,20 +33,17 @@ export class DetailPage implements OnInit {
         }) != -1;
   
     if (isExist) {
-      const alert = await this.alertControllerl.create({
-        cssClass: 'my-custom-class',
-        header: 'Error',
-        message: 'Data tidak boleh duplikat.',
-        buttons: ['OK']
-      });
-  
-      await alert.present();
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal!',
+        text: 'Weather yang difavorit tidak boleh sama!',
+      })
     } else {
-      const toast = await this.toastController.create({
-        message: 'Berhasil di favoritkan.',
-        duration: 2000
-      });
-      toast.present();
+      Swal.fire(
+        'Sukses!',
+        'Weather berhasil difavoritkan!',
+        'success'
+      )
       data.push(this.weather);
       localStorage.setItem('fav', JSON.stringify(data));
     }
