@@ -15,7 +15,16 @@
   </ion-header>
   
   <div id="container" style="margin-top: 100px;" class="ion-text-center">
-    <ion-label color="success">
+
+    <ion-label color="danger" *ngIf="weather.temp > 25">
+      <h1 class="ion-60p" >{{weather.temp}} °C</h1>
+    </ion-label>
+
+    <ion-label color="success" *ngIf="weather.temp >= 20 && weather.temp <= 25">
+      <h1 class="ion-60p" >{{weather.temp}} °C</h1>
+    </ion-label>
+
+    <ion-label color="primary" *ngIf="weather.temp < 20">
       <h1 class="ion-60p" >{{weather.temp}} °C</h1>
     </ion-label>
     

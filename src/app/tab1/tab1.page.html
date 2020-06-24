@@ -16,7 +16,19 @@
     </ion-header>
 
     <div style="margin-top: 50px;" id="container">
-        <ion-label color="success">
+        <ion-label color="primary" *ngIf="temp < 20">
+          <h1 class="ion-60p ion-text-center ion-padding-top" color="success"> {{ temp }} °C <br>
+            <small class="ion-text-center">{{ time | date: 'hh:mm:ss a' }}</small>
+          </h1>
+        </ion-label>
+
+        <ion-label color="danger" *ngIf="temp > 25">
+          <h1 class="ion-60p ion-text-center ion-padding-top" color="success"> {{ temp }} °C <br>
+            <small class="ion-text-center">{{ time | date: 'hh:mm:ss a' }}</small>
+          </h1>
+        </ion-label>
+
+        <ion-label color="success" *ngIf="temp >= 20 && temp <= 25">
           <h1 class="ion-60p ion-text-center ion-padding-top" color="success"> {{ temp }} °C <br>
             <small class="ion-text-center">{{ time | date: 'hh:mm:ss a' }}</small>
           </h1>
